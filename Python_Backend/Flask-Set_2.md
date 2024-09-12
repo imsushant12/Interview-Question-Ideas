@@ -213,27 +213,6 @@
    gunicorn app:app --workers 3
    ```
 
-6. **What are Django signals, and when would you use them?**
-
-   **Answer**:
-   **Django signals** allow certain senders to notify a set of receivers when certain actions have occurred. They enable a form of event-driven programming within the Django framework, which can decouple parts of the application.
-
-   **Use cases**:
-   - Automatically send a welcome email after a user registers.
-   - Update related models when a specific model is saved or deleted.
-
-   **Example**:
-   ```python
-   from django.db.models.signals import post_save
-   from django.dispatch import receiver
-   from .models import UserProfile
-
-   @receiver(post_save, sender=User)
-   def create_user_profile(sender, instance, created, **kwargs):
-       if created:
-           UserProfile.objects.create(user=instance)
-   ```
-
 ## Advanced Level Questions
 1. **How would you implement horizontal scaling for a Python Flask web application?**
 
